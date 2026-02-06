@@ -4,216 +4,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marliz Intel Field Manual - Shield Edition</title>
+    <title>Marliz Intel Field Manual - Official Edition</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&family=Rajdhani:wght@600;700&display=swap"
+        rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;600;700&display=swap');
-
         body {
-            background-color: #111;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 40px;
-            font-family: 'Rajdhani', sans-serif;
-            flex-wrap: wrap;
-        }
-
-        .book-cover {
-            width: 595px;
-            /* A5 width roughly scaled */
-            height: 842px;
-            /* A5 height roughly scaled */
-            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
-            color: #fff;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #222;
-        }
-
-        /* --- COLORS based on your Shield Image --- */
-        :root {
-            --marliz-orange: #FF9D00;
-            --marliz-blue: #00C2FF;
-            --text-white: #EEEEEE;
-        }
-
-        /* --- FRON (Reference Mockup) --- */
-        .front-mockup {
-            text-align: center;
-            padding-top: 80px;
-        }
-
-        .stencil-title {
-            font-family: 'Black Ops One', cursive;
-            /* Military Stencil Look */
-            font-size: 52px;
-            line-height: 0.9;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .subtitle-orange {
-            color: var(--marliz-orange);
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 15px;
-            text-shadow: 0 0 10px rgba(255, 157, 0, 0.4);
-        }
-
-        .shield-placeholder {
-            margin: 50px auto;
-            width: 200px;
-            height: 240px;
-            border: 2px solid var(--marliz-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--marliz-blue);
-            box-shadow: 0 0 50px rgba(0, 194, 255, 0.2), inset 0 0 20px rgba(0, 194, 255, 0.1);
-            position: relative;
-        }
-
-        .shield-placeholder::before {
-            content: "SHIELD IMAGE HERE";
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
-
-        /* --- BACK COVER (The Task) --- */
-        .back-content {
+            background-color: #0F0F12;
+            margin: 0;
             padding: 50px;
-            height: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .cover {
+            width: 595px;
+            /* A5 Scaled */
+            height: 842px;
+            position: relative;
+            background: #000;
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        /* --- FRONT COVER --- */
+        .front-cover {
+            background: url('background.jpg') no-repeat center center;
+            background-size: cover;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
-            border-top: 4px solid var(--marliz-blue);
-            border-bottom: 4px solid var(--marliz-orange);
-        }
-
-        .back-quote {
-            font-family: 'Black Ops One', cursive;
-            font-size: 24px;
-            color: white;
-            line-height: 1.4;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        .highlight-blue {
-            color: var(--marliz-blue);
-        }
-
-        .highlight-orange {
-            color: var(--marliz-orange);
-        }
-
-        .back-blurb {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #ccc;
-            border-left: 2px solid var(--marliz-orange);
-            padding-left: 20px;
-            margin-bottom: 50px;
-        }
-
-        .tech-specs {
-            display: flex;
             justify-content: space-between;
-            font-size: 11px;
-            color: #555;
-            font-family: monospace;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-            margin-top: auto;
+            padding: 60px 40px;
+            box-sizing: border-box;
         }
 
-        .qr-area {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            text-align: center;
-        }
-
-        .qr-box {
-            width: 70px;
-            height: 70px;
-            background: white;
-            margin-bottom: 5px;
-        }
-
-        .spine-text {
-            color: var(--marliz-orange);
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-
-        .circuit-overlay {
+        .front-cover::after {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: linear-gradient(rgba(0, 194, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 194, 255, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .overlay-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .top-meta {
+            font-family: 'Share Tech Mono', monospace;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .title-group {
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-family: 'Black Ops One', cursive;
+            font-size: 58px;
+            line-height: 0.9;
+            margin: 0;
+            color: #fff;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+            letter-spacing: 2px;
+        }
+
+        .field-manual-tag {
+            background: #FF5722;
+            color: #000;
+            display: inline-block;
+            padding: 5px 15px;
+            font-weight: 900;
+            font-size: 20px;
+            margin-top: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            margin-top: auto;
+            color: #00C2FF;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-left: 3px solid #ff5722;
+            padding-left: 15px;
+            text-shadow: 0 0 10px rgba(0, 194, 255, 0.5);
+        }
+
+        /* --- BACK COVER --- */
+        .back-cover {
+            background: #050505;
+            padding: 80px 60px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .back-cover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            filter: grayscale(100%);
+        }
+
+        .quote-block {
+            position: relative;
+            z-index: 10;
+            border-left: 4px solid #FF5722;
+            padding-left: 25px;
+            margin-bottom: 50px;
+        }
+
+        .quote {
+            font-family: 'Black Ops One', cursive;
+            font-size: 28px;
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: #EEE;
+        }
+
+        .quote span {
+            color: #00C2FF;
+        }
+
+        .blurb-text {
+            position: relative;
+            z-index: 10;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #AAA;
+        }
+
+        .footer {
+            position: relative;
+            z-index: 10;
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-family: 'Share Tech Mono', monospace;
+            color: #444;
+        }
+
+        .qr-box {
+            width: 80px;
+            height: 80px;
+            background: white;
+            padding: 5px;
+            opacity: 0.8;
+        }
+
+        .qr-pattern {
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, #000 0, #000 5px, #fff 5px, #fff 10px);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- FRONT COVER (Recreation for Context) -->
-    <div class="book-cover">
-        <div class="circuit-overlay"></div>
-        <div class="front-mockup">
-            <div class="stencil-title">Marliz Intel<br> Field Manual.</div>
-            <div class="subtitle-orange">Practical Cybersecurity from<br>The Kenyan Digital Frontlines</div>
+    <!-- FRONT COVER -->
+    <div class="cover front-cover">
+        <div class="overlay-content">
+            <div class="top-meta">MARLIZ INTEL // SEC_OPS // 2026</div>
+            <div class="title-group">
+                <h1>MARLIZ INTEL</h1>
+                <div class="field-manual-tag">FIELD MANUAL</div>
+            </div>
+        </div>
 
-            <div class="shield-placeholder">
-                <!-- User to insert Shield Image Here -->
+        <div class="overlay-content" style="margin-top: auto;">
+            <div class="tagline">
+                PRACTICAL CYBERSECURITY FROM<br>
+                THE KENYAN DIGITAL FRONTLINES
+            </div>
+            <div
+                style="margin-top: 20px; font-family: 'Share Tech Mono'; font-size: 10px; color: rgba(255,255,255,0.3);">
+                BY JOHN MARK OGUTA & THE MARLIZ INTEL TEAM
             </div>
         </div>
     </div>
 
-    <!-- BACK COVER (Matching Style) -->
-    <div class="book-cover">
-        <div class="circuit-overlay"></div>
-        <div class="back-content">
-            <div class="back-quote">
-                "The Frontend is a <span class="highlight-blue">Lion</span>.<br>
-                The Backend is a <span class="highlight-blue">Lamb</span>.<br>
-                And the Hacker is <span class="highlight-orange">Hungry</span>."
+    <!-- BACK COVER -->
+    <div class="cover back-cover">
+        <div class="quote-block">
+            <div class="quote">
+                "The Frontend is a <span>Lion</span>.<br>
+                The Backend is a <span>Lamb</span>.<br>
+                And the Hacker is <span style="color:#FF5722">Hungry</span>."
             </div>
+        </div>
 
-            <div class="back-blurb">
-                <p><strong>WAR MANUAL // 2026</strong></p>
-                <p>This is not a textbook. This is a field guide deployed by Marliz Intel to secure the Kenyan digital
-                    ecosystem.</p>
-                <p>From identifying AI-generated "Vibe Coding" to executing 10-minute emergency patches, this manual
-                    contains the exact protocols used by our Red and Blue teams.</p>
-                <p><strong>NO THEORY. JUST TACTICS.</strong></p>
+        <div class="blurb-text">
+            <p><strong>WAR MANUAL // KE_V1</strong></p>
+            <p>This is not a textbook. This is a field guide forged in high-stakes security audits across the Kenyan
+                digital landscape.</p>
+            <p>From the rise of AI-generated "Vibe Coding" to the brutal reality of the 1,400-line monolith, this manual
+                documents the exact strategies used by Marliz Intel to neutralise threats.</p>
+            <p style="color: #00C2FF; font-weight: bold; margin-top: 30px; letter-spacing: 2px;">NO THEORY. JUST
+                TACTICS.</p>
+        </div>
+
+        <div class="footer">
+            <div class="qr-box">
+                <div class="qr-pattern"></div>
             </div>
-
-            <div class="tech-specs">
-                <div>
-                    DOC_ID: 8092-KE<br>
-                    CLASS: UNCLASSIFIED
-                </div>
-                <div class="spine-text">MARLIZ INTEL</div>
-            </div>
-
-            <div class="qr-area">
-                <div class="qr-box"></div>
-                <small style="color:white; letter-spacing:1px;">VERIFY</small>
+            <div style="text-align: right; font-size: 11px;">
+                AUTHORISED PUBLICATION<br>
+                marlizintel.com<br>
+                NAIROBI, HQ
             </div>
         </div>
     </div>
