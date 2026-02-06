@@ -1,0 +1,11 @@
+{
+    "markdown-pdf.displayHeaderFooter": true,
+    "markdown-pdf.headerTemplate": "<div style='font-family: \"JetBrains Mono\", monospace; font-size: 8px; width: 100%; text-align: right; border-bottom: 1px solid #eee; padding-bottom: 5px; color: #999; margin: 0 20mm;'>MARLIZ INTEL FIELD MANUAL // V1.0 <span style='margin-left: 20px;'>Nairobi Security Ops</span></div>",
+    "markdown-pdf.footerTemplate": "<div style='font-family: \"JetBrains Mono\", monospace; font-size: 8px; width: 100%; display: flex; justify-content: space-between; color: #999; margin: 0 20mm;'><span class='title'></span> <span>Page <span class='pageNumber'></span> / <span class='totalPages'></span></span></div>",
+    "markdown-pdf.margin.top": "25mm",
+    "markdown-pdf.margin.bottom": "25mm",
+    "markdown-pdf.margin.left": "25mm",
+    "markdown-pdf.margin.right": "20mm",
+    "markdown-pdf.format": "A4",
+    "markdown-pdf.printBackground": true
+}

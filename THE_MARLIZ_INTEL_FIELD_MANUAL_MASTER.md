@@ -7,88 +7,150 @@ date: 2026
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap');
 
+/* --- PROFESSIONAL TYPESETTING RULES --- */
+@page {
+    size: A4;
+    margin: 28mm 25mm 28mm 35mm; /* Professional Gutter for Binding */
+}
+
+/* Widows and Orphans Protection */
+p, li {
+    widows: 3;
+    orphans: 3;
+}
+
 body {
     font-family: 'IBM Plex Sans', sans-serif;
-    line-height: 1.75;
+    line-height: 1.85;
     color: #1a1a1a;
     text-align: justify;
-    font-size: 11.5pt;
-    font-weight: 450; /* Slightly bolder for physical print quality */
+    font-size: 11pt;
 }
 
-h1, h2, h3 {
+/* --- PREMIUM CHAPTER STARTS (Drop Caps) --- */
+h1 + p::first-letter {
+    float: left;
     font-family: 'Montserrat', sans-serif;
+    font-size: 4.8em;
+    line-height: 0.8;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 3px;
     color: #FF5722;
     font-weight: 800;
+}
+
+/* --- HEADERS --- */
+h1 { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em; 
+    color: #000;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    border-bottom: 3px solid #eee;
-    padding-bottom: 12px;
-    margin-top: 50px;
+    page-break-before: always;
+    border-bottom: 15px solid #FF5722;
+    padding-bottom: 30px;
+    margin-bottom: 80px;
 }
 
-h1 { font-size: 3em; page-break-before: always; }
-h2 { font-size: 2em; color: #2D3436; }
-h3 { font-size: 1.4em; color: #FF5722; border: none; }
-
-code {
-    font-family: 'JetBrains Mono', monospace;
-    background: #f4f7f9;
-    color: #d63031;
-    padding: 3px 6px;
-    border-radius: 4px;
-    font-size: 0.95em;
+h2 { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em; 
+    color: #FF5722; 
+    text-transform: uppercase;
+    margin-top: 80px;
+    margin-bottom: 30px;
 }
 
+/* --- PROFESSIONAL DOT-LEADER TOC --- */
+.toc-container {
+    max-width: 90%;
+    margin: 40px 0;
+}
+
+.toc-entry {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.toc-entry span:first-child {
+    float: left;
+    padding-right: 5px;
+}
+
+.toc-entry::after {
+    content: " ...................................................................................................................................................................................";
+    color: #ccc;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+/* --- CODE BLOCKS (SOC AUDIT STYLE) --- */
 pre {
     background: #0d0d12 !important;
     color: #00FF41 !important;
-    padding: 25px;
-    border-left: 6px solid #FF5722;
-    border-radius: 4px;
-    overflow-x: auto;
-    font-size: 10.5pt;
+    padding: 30px;
+    border-radius: 0;
+    font-size: 10pt;
     font-family: 'JetBrains Mono', monospace;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-left: 8px solid #FF5722;
+    margin: 40px 0;
+    page-break-inside: avoid;
 }
 
-.preliminary {
-    text-align: center;
-    margin-top: 100px;
-}
-
-.dedication {
-    font-style: italic;
-    color: #555;
-    margin-top: 200px;
-    font-size: 1.2em;
-}
-
-/* Page Numbering - CSS for Markdown PDF Export */
-@page {
-    margin: 25mm;
-    @bottom-right {
-        content: counter(page);
-    }
+/* --- INNER COVER --- */
+.inner-cover {
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #ddd;
+    padding: 80px;
+    text-align: left;
 }
 </style>
 
-<div class="preliminary">
-    <h1>THE MARLIZ INTEL FIELD MANUAL</h1>
-    <p>Version 1.0 // 2026</p>
-    <p>Authored by <strong>John Mark Oguta</strong></p>
-    <p>The Marliz Intel Security Team</p>
+<div class="inner-cover">
+    <div style="font-family: 'JetBrains Mono'; color: #FF5722; margin-bottom: 50px;">DOCUMENT_NO: MIZ-FM-2026-V1</div>
+    <h1 style="border:none; padding:0; margin:0; line-height:0.9;">THE MARLIZ INTEL<br>FIELD MANUAL.</h1>
+    <div style="font-size: 1.8em; color: #555; margin-top: 30px; font-weight: 500;">Practical Cybersecurity Tactical Guide.</div>
+    
+    <div style="margin-top: auto;">
+        <div style="font-family: 'Montserrat'; font-weight: 800; font-size: 1.8em;">JOHN MARK OGUTA</div>
+        <div style="color: #888; font-family: 'JetBrains Mono'; letter-spacing: 2px;">LEAD SECURITY ANALYST // MARLIZ INTEL</div>
+        <div style="color: #FF5722; font-weight: 800; font-size: 1.2em; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px; display: inline-block;">MARLIZINTEL.COM</div>
+    </div>
 </div>
 
 <div style='page-break-after: always;'></div>
 
-<div class="preliminary">
-    <div class="dedication">
-        To the developers and security analysts of the Kenyan Digital Frontline.<br>
-        To those who build by day and defend by night.<br>
-        And to "Mwalimu," for whom we simplify the complex.
+<div style="text-align: left; margin-top: 350px; padding-left: 100px;">
+    <div style="font-style: italic; color: #777; font-size: 1.4em; max-width: 450px; line-height: 1.8; border-left: 4px solid #FF5722; padding-left: 30px;">
+        "To the builders and defenders of the Kenyan Digital Frontline. You are the wall."
     </div>
 </div>
+
+<div style='page-break-after: always;'></div>
+
+# TABLE OF CONTENTS
+<div class="toc-container">
+    <div class="toc-entry"><span>01 . PART 1: VIBE CODING PROTOCOLS</span></div>
+    <div class="toc-entry"><span>02 . PART 2: OFFENSIVE SECURITY</span></div>
+    <div class="toc-entry"><span>03 . PART 3: DEFENSIVE SECURITY</span></div>
+    <div class="toc-entry"><span>04 . PART 4: INCIDENT RESPONSE</span></div>
+    <div class="toc-entry"><span>05 . PART 5: THE BUSINESS OF SECURITY</span></div>
+    <div class="toc-entry"><span>06 . PART 6: TOOLS OF THE TRADE</span></div>
+    <div class="toc-entry"><span>07 . APPENDICES</span></div>
+</div>
+
+<div style='page-break-after: always;'></div>
+
+<div style='page-break-after: always;'></div>
 
 <div style='page-break-after: always;'></div>
 
