@@ -5,50 +5,108 @@
 ## The Keys to the Kingdom
 
 In 99% of PHP applications, the database connection details are stored in a file named `config.php`, `db.php`, or `.env`.
+This file contains the **Crown Jewels**: `DB_HOST`, `DB_NAME`, `DB_USER`, and `DB_PASS`.
 
-This file contains four critical pieces of information:
-1. **DB_HOST**: Where the database lives.
-2. **DB_NAME**: The name of the data store.
-3. **DB_USER**: The username authorized to access it.
-4. **DB_PASS**: The password that protects it.
+If an attacker reads this file, the firewall does not matter. The encryption does not matter. The attacker *is* the admin.
 
-If an attacker reads this file, they own the data.
+## The Mechanic: How Web Servers Handle Files
 
-## The Visibility Paradox
+To understand how to steal this file, you must understand how Apache and Nginx work.
 
-If you navigate to `target.com/config.php` in your browser, you will see a blank page.
+When you request `https://target.com/index.php`, the server looks at the extension `.php`.
+1.  It sees `.php` in its MIME mapping.
+2.  It sends the file to the **PHP Preprocessor (PHP-FPM)**.
+3.  PHP executes the code (`<?php $pass="secret"; ?>`).
+4.  PHP returns the *output* (which is usually nothing for a config file).
+5.  The browser sees a blank page.
 
-This is because the server identifies the `.php` extension, executes the code within (which sets variables but outputs no text), and sends the empty result to the browser. The secrets remain hidden in the server's memory.
+**The Goal:** We must trick the server into skipping Step 2. We want the server to treat the file as **Plain Text**, not **Code**.
 
-To steal the credentials, we must trick the server into treating the file as **text** instead of **code**.
+---
 
 ## Method 1: The Backup Mistake (The Vibe Coder Special)
 
-When a developer edits the configuration, they often save a backup. They rename the file to `config.php.bak` or `config.php.old`.
+Vibe Coders are terrified of breaking things. So before they edit the config to change a password, they make a copy.
+They rename `config.php` to `config.php.bak`, `config.php.old`, or `config.php_copy`.
 
-This is a critical error.
+### The Vulnerability
+Apache knows that `.php` is code.
+Apache *does not* know what `.bak` is.
 
-Most web servers (Apache/Nginx) are configured to execute `.php` files. They are *not* configured to execute `.bak` files. When you request `target.com/config.php.bak`, the server treats it as a plain text file and invites you to download it.
+When you request `target.com/config.php.bak`:
+1.  Server checks extension `.bak`.
+2.  No handler exists for `.bak`.
+3.  Server falls back to default behavior: **Serve as Download** (`application/octet-stream`).
+4.  The browser downloads the raw source code.
 
-You open the text file. You see the password.
+**War Story: The "Hidden" Dotfile**
+A Kenyan SACCO had a secure site. But the developer used `nano` to edit files on the server.
+When `nano` crashes or is closed improperly, it leaves a recovery file named `.config.php.swp` (Swap file).
+We scanned for `.swp` files. We downloaded it. It contained the database credentials.
+**Lesson**: Tools leave artifacts. Artifacts leak data.
 
-## Method 2: The View Source Vulnerability
+---
 
-Sometimes, developers leave "source code viewers" in production to help them debug.
+## Method 2: PHP Wrapper LFI (Bypassing Execution)
 
-`target.com/view.php?file=index.php`
+If the site has a Local File Inclusion vulnerability (e.g., `index.php?page=about`), everyday attackers try to read `/etc/passwd`.
+Pros try to read `config.php`.
 
-If we change the parameter to `config.php`, the script reads the file content and displays it on the screen.
+**The Failure:**
+Request: `index.php?page=config.php`
+Result: The server `include()`s the file. It executes it. You see a blank screen because `$password = "123"` produces no HTML output.
 
-## Method 3: LFI with Wrappers
+**The Fix: `php://filter`**
+PHP has a built-in stream wrapper system. We can tell PHP to "filter" the stream before using it.
 
-If the site has a Local File Inclusion vulnerability (e.g., `?page=home`), simply requesting `?page=config.php` will not work. The server will include and *execute* the config file. You still see nothing.
+**Payload:**
+`index.php?page=php://filter/convert.base64-encode/resource=config.php`
 
-We must use PHP Filters to encode the payload.
+**What happens:**
+1.  PHP opens `config.php`.
+2.  PHP passes the content through the `base64-encode` filter.
+3.  The opening tag `<?php` becomes `PD9waHA=`.
+4.  Since it no longer looks like code, the `include()` statement treats it as a string and prints it to the screen.
 
-Payload: `?page=php://filter/convert.base64-encode/resource=config.php`
+**The Result:**
+You see a massive block of random text:
+`PD9waHANCiRkYl91c2VyID0gJ2FkbWluJzsNCiRkYl9wYXNzID0gJ3N1cGVyc2VjcmV0Jzs...`
 
-This forces the server to base64 encode the file content *before* displaying it. The browser displays a long string of random characters. We copy this string, decode it locally, and reveal the plaintext code.
+**The Loot:**
+Copy that string. Run `base64 -d` on your terminal.
+You now have the source code.
+
+---
+
+## Method 3: The Text Editor Artifacts
+
+Developers use VS Code, JetBrains, or Sublime Text. These editors create hidden folders like `.vscode/` or `.idea/`.
+Often, the `sftp-config.json` file inside these folders contains the FTP credentials for the server, stored in plain text.
+
+**Attack Vector:**
+`GET /.vscode/sftp.json`
+`GET /.idea/webServers.xml`
+
+If the `.gitignore` didn't catch these, and they were uploaded, you just compromised the FTP account.
+
+---
+
+## Drill: The Manual Check
+
+Don't rely on tools. Use `curl` to verify exactly what the server is telling you.
+
+```bash
+# Check for backup file
+curl -I -X GET https://target.com/config.php.bak
+
+# Analyze Headers
+HTTP/1.1 200 OK
+Content-Type: text/plain  <-- THIS IS THE WIN
+Content-Length: 456
+```
+
+If `Content-Type` is `text/html`, it executed (Bad for us).
+If `Content-Type` is `text/plain` or `application/octet-stream`, it downloaded (Good for us).
 
 ---
 
