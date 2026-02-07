@@ -617,11 +617,20 @@
         }
 
         .toc-item::after {
-            content: " ....................................................................................................................";
+            content: "";
             color: #ccc;
             flex-grow: 1;
             margin: 0 10px;
             overflow: hidden;
+        }
+
+        .toc-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .toc-item a:hover {
+            color: #FF5722;
         }
     </style>
 </head>
@@ -679,15 +688,15 @@
     <div class="page">
         <h1>TABLE OF CONTENTS</h1>
         <div class="toc-list">
-            <div class="toc-item"><span>PART 1 VIBE CODING</span></div>
-            <div class="toc-item"><span>PART 2 OFFENSIVE SECURITY</span></div>
-            <div class="toc-item"><span>PART 3 DEFENSIVE SECURITY</span></div>
-            <div class="toc-item"><span>PART 4 INCIDENT RESPONSE</span></div>
-            <div class="toc-item"><span>PART 5 BUSINESS OF SECURITY</span></div>
-            <div class="toc-item"><span>PART 6 TOOLS OF THE TRADE</span></div>
+            <div class="toc-item"><a href="#part1">PART 1 VIBE CODING</a></div>
+            <div class="toc-item"><a href="#part2">PART 2 OFFENSIVE SECURITY</a></div>
+            <div class="toc-item"><a href="#part3">PART 3 DEFENSIVE SECURITY</a></div>
+            <div class="toc-item"><a href="#part4">PART 4 INCIDENT RESPONSE</a></div>
+            <div class="toc-item"><a href="#part5">PART 5 BUSINESS OF SECURITY</a></div>
+            <div class="toc-item"><a href="#part6">PART 6 TOOLS OF THE TRADE</a></div>
         </div>
     </div>
-    <div class="page">
+    <div class="page" id="part1">
         <h1 style="margin-top:100px;">PART 1 VIBE CODING</h1>
     </div>
     <div class="page">
@@ -1072,7 +1081,7 @@ if ($withdraw_amount &lt; $current_balance) {
                 Marliz Intel Field Manual</p>
         </div>
     </div>
-    <div class="page">
+    <div class="page" id="part2">
         <h1 style="margin-top:100px;">PART 2 OFFENSIVE SECURITY</h1>
     </div>
     <div class="page">
@@ -1547,7 +1556,7 @@ echo &quot;Connected successfully&quot;;
                 Marliz Intel Field Manual</p>
         </div>
     </div>
-    <div class="page">
+    <div class="page" id="part3">
         <h1 style="margin-top:100px;">PART 3 DEFENSIVE SECURITY</h1>
     </div>
     <div class="page">
@@ -1992,7 +2001,7 @@ $pass = &quot;SuperSecretAdminPass123&quot;;
                 Marliz Intel Field Manual</p>
         </div>
     </div>
-    <div class="page">
+    <div class="page" id="part4">
         <h1 style="margin-top:100px;">PART 4 INCIDENT RESPONSE</h1>
     </div>
     <div class="page">
@@ -2268,7 +2277,7 @@ scp -r root@target.com:/var/www/html/ ./evidence/html_dump/
                 Marliz Intel Field Manual</p>
         </div>
     </div>
-    <div class="page">
+    <div class="page" id="part5">
         <h1 style="margin-top:100px;">PART 5 BUSINESS OF SECURITY</h1>
     </div>
     <div class="page">
@@ -2624,7 +2633,7 @@ Confidentiality Notice: This email contains sensitive security findings.
                 Marliz Intel Field Manual</p>
         </div>
     </div>
-    <div class="page">
+    <div class="page" id="part6">
         <h1 style="margin-top:100px;">PART 6 TOOLS OF THE TRADE</h1>
     </div>
     <div class="page">
