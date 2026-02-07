@@ -53,7 +53,7 @@ When an AI makes a mistake, who is responsible?
 ### D. The Novel Attack Problem
 AI is trained on historical data. It excels at detecting attacks it has seen before. A zero-day exploit or a new adversary technique has no training data.
 
-**Statistic (Industry Observation):** Organizations that rely solely on AI-driven detection experience a 30-40% miss rate on novel attack techniques compared to those with active human hunting programs.
+**Observation:** Security researchers consistently report that ML-based detection alone misses a significant percentage of novel attack techniques. Active human hunting programs remain essential for detecting adversaries who deliberately evade automated systems. This is not a failure of AI; it is a fundamental limitation of pattern-based detection when the pattern does not yet exist.
 
 ---
 
