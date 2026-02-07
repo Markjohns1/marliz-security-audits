@@ -4,32 +4,48 @@
 
 ---
 
-## 🏗️ SOC Architecture Overview
+## SOC Architecture Overview
 A Security Operations Center (SOC) is defined by its data pipeline. The effectiveness of a SOC is directly proportional to its ability to ingest, parse, and correlate disparate log sources.
-
-### Phase 1: Ingestion Pipeline
-The focus is on the mechanics of data movement. This covers log shippers, aggregators, buffers, and normalization schemas. Without a structured pipeline, the SIEM remains a "Data Swamp" rather than an intelligence tool.
-
-### Phase 2: Detection Engineering
-The engineering of logic (rules) to identify malicious activity within the telemetry stream. We utilize industry standards such as Sigma (for SIEM), YARA (for files), and KQL (for cloud hunting).
-
-### Phase 3: Tactical Threat Hunting
-The iterative process of searching through networks to detect and isolate advanced threats that evade existing security solutions. This is hypothesis-driven and relies on deep baseline knowledge.
-
-### Phase 4: Incident Response
-The procedural execution of containment, eradication, and recovery. This phase focuses on "The Kill Chain" and the playbooks required to neutralize active adversaries.
 
 ---
 
-## 🛠️ Infrastructure Standards
+## Table of Contents
+
+### Phase 1: Ingestion Pipeline
+The foundation. How data moves from source to SIEM.
+*   [Mission 1.1: The Bloodline - Data Ingestion & Normalization](./Phase-1-Ingestion-Pipeline/mission-1-1-the-bloodline.md)
+*   [Mission 1.2: SIEM Selection and Architectural Integration](./Phase-1-Ingestion-Pipeline/mission-1-2-the-siem-toolbox.md)
+*   [Mission 1.3: Strategic Monitoring & Baseline Analysis](./Phase-1-Ingestion-Pipeline/mission-1-3-log-monitoring.md)
+
+### Phase 2: Detection Engineering
+The eyes. Writing logic to identify malicious activity.
+*   [Mission 2.1: Sigma Rules - The Universal Detection Language](./Phase-2-Detection-Engineering/mission-2-1-sigma-rules.md)
+*   [Mission 2.2: YARA Rules - File & Memory Pattern Matching](./Phase-2-Detection-Engineering/mission-2-2-yara-rules.md)
+*   [Mission 2.3: Alert Tuning - Reducing Noise Without Losing Signal](./Phase-2-Detection-Engineering/mission-2-3-alert-tuning.md)
+
+### Phase 3: Tactical Threat Hunting
+The hunt. Proactive searching for adversaries.
+*   [Mission 3.1: Hypothesis-Driven Threat Hunting](./Phase-3-Tactical-Hunting/mission-3-1-hypothesis-hunting.md)
+*   [Mission 3.2: Indicator of Compromise (IOC) Management](./Phase-3-Tactical-Hunting/mission-3-2-ioc-management.md)
+
+### Phase 4: Incident Response
+The kill. Containing and eradicating active threats.
+*   [Mission 4.1: Incident Response Playbooks](./Phase-4-Incident-Response/mission-4-1-playbooks.md)
+*   [Mission 4.2: Forensic Evidence Collection](./Phase-4-Incident-Response/mission-4-2-forensic-collection.md)
+*   [Mission 4.3: Post-Incident Reporting](./Phase-4-Incident-Response/mission-4-3-post-incident-reporting.md)
+
+---
+
+## Infrastructure Standards
 In this environment, we utilize the following stacks:
 *   **SIEM:** Splunk (Enterprise), ELK (Open Source), Microsoft Sentinel (Cloud).
 *   **EDR/XDR:** CrowdStrike, SentinelOne, Microsoft Defender.
 *   **Packet Analysis:** Zeek, Suricata, Wireshark.
+*   **Threat Intel:** MISP, OpenCTI, AlienVault OTX.
 
 ---
 
-## 📄 Operational Usage
+## Operational Usage
 Every module in this section is a Mission. These are designed to be executed as real-world tasks. Completion of a mission indicates a competency in the specified functional area.
 
 **Analyst:** Marliz Intel Security Team
