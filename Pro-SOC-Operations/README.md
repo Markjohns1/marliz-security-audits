@@ -34,6 +34,12 @@ The kill. Containing and eradicating active threats.
 *   [Mission 4.2: Forensic Evidence Collection](./Phase-4-Incident-Response/mission-4-2-forensic-collection.md)
 *   [Mission 4.3: Post-Incident Reporting](./Phase-4-Incident-Response/mission-4-3-post-incident-reporting.md)
 
+### Phase 5: Future Operations
+The evolution. AI integration and emerging threats.
+*   [Mission 5.1: AI in SOC Operations - The Real Analysis](./Phase-5-Future-Operations/mission-5-1-ai-in-soc.md)
+*   [Mission 5.2: Emerging Threats and SOC Evolution (2026+)](./Phase-5-Future-Operations/mission-5-2-emerging-threats.md)
+
+
 ---
 
 ## Infrastructure Standards
