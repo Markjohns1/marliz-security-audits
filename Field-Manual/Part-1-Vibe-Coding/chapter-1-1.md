@@ -37,7 +37,7 @@ We don't want to stop the "vibe"—we want to **harden** it.
 
 ---
 
-## 📑 Portfolio Use-Case
+## Portfolio Use-Case
 When explaining this on your CV:
 *   **Skill:** "Security-Focused Refactoring."
 *   **Action:** "Identified critical vulnerabilities in a live e-commerce platform caused by rapid 'Vibe Coding' practices. Implemented architectural hardening to secure financial transactions and user data."

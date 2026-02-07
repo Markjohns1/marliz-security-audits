@@ -48,7 +48,7 @@ When advising clients on SIEM selection, the following criteria are weighted:
 
 ---
 
-## 📑 Professional Narrative
+## Professional Narrative
 "Conducted comparative analysis of SIEM architectures to determine optimal deployment strategy for diverse client environments. Developed cost-to-performance models for log ingestion, resulting in a 20% reduction in licensing overhead while maintaining 100% telemetry coverage."
 
 **Status:** Mission 1.2 Complete.

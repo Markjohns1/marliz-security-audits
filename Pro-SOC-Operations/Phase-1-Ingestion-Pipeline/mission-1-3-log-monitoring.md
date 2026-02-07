@@ -51,7 +51,7 @@ One of the most effective monitors is **FIM (File Integrity Monitoring)**.
 
 ---
 
-## 📑 Professional Narrative
+## Professional Narrative
 "Designed and deployed enterprise-grade SOC dashboards providing real-time visibility into high-value telemetry. Established behavior-based baselines to identify anomalous activity, significantly reducing the Mean Time to Detect (MTTD) for sophisticated endpoint intrusions."
 
 **Status:** Mission 1.3 Complete.

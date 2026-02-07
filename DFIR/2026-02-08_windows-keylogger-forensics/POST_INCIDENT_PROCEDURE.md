@@ -40,7 +40,7 @@ netstat -ano | findstr "ESTABLISHED"
 
 ---
 
-## 📑 Phase 3: Log Auditing (How did they get in?)
+## Phase 3: Log Auditing (How did they get in?)
 We need to see if they remote-logged into your machine.
 
 ### Task 3.1: Audit Successful Network Logons (Event ID 4624)

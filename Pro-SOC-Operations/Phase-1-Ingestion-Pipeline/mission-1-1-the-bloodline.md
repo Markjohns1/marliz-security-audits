@@ -48,7 +48,7 @@ To normalize data, you must extract key-value pairs from raw strings.
 
 ---
 
-## 📑 Professional Narrative
+## Professional Narrative
 "Engineered high-availability ingestion pipelines utilizing a tiered architecture to ensure telemetry persistence. Implemented comprehensive log normalization strategies to facilitate multi-vector correlation and reduce mean-time-to-detection (MTTD)."
 
 **Status:** Mission 1.1 Complete.
