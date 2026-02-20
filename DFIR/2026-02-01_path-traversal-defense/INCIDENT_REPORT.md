@@ -47,7 +47,7 @@ The incident was identified in real-time by **John Mark Oguta** during routine l
 *   **Credential Revocation:** John Mark mandated immediate secret rotation, assuming all environment variables were compromised.
     *   **Groq API Key:** Rotated (Revoked old, created new).
     *   **Resend API Key:** Rotated (Revoked old, created new).
-    *   **Admin Dashboard Secret:** Rotated to `Intel2004!`.
+    *   **Admin Dashboard Secret:** Rotated to `{reducted}`.
 
 ### **Phase 4: Recovery & Hardening (18:46 - 19:00)**
 *   **DB Audit:** A manual SQL check confirmed no new `APIKey` records were added by the attacker. Record ID 1 (`admin`) remained unchanged since December 2025.
